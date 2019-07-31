@@ -17,6 +17,8 @@ namespace typings {
   //ClassProtoConstructor is a function that takes in an object of generic types with string keys and TypeName<any> values.
   callback Observable<T> = T?(optional T? val);
   Observable<T> createTypedVar<T extends Object>(TypeName<T> tipe, T value);
-  
+  any createGenericClass(sequence<string> genArgs, ClassProtoConstructor proto);
+  boolean typeCheck<T>(TypeName<T> tipe, T obj);
+  T instantiate<T>(TypeName<T> tipe);
 }
 ```
