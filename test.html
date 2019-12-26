@@ -8,38 +8,22 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      let MyTestClass = typings.createGenericClass(["T"], typeArgs => ({
-        constructor(__this__, myTestThing) {
-          if (typings.typeCheck(typeArgs.T, myTestThing)) {
-            __this__.thingy = typings.createTypedVar(typeArgs.T, myTestThing);
-          } else {
-            __this__.thingy = typings.createTypedVar(
-              typeArgs.T,
-              typings.instantiate(typeArgs.T)
-            );
-          }
-        },
-        alertUser() {
-          alert(this.thingy());
+    <my-elem-string></my-elem-string>
+    <my-elem-obj></my-elem-obj>
+    <script type="module">
+      import * as typings from './dist/main.js';
+      import {TemplateElement} from 'https:cdn.jsdelivr.net/npm/template-element';
+      const MyElement = typings.createGenericClass(["T"], tArgs => class extends TemplateElement {
+        get template() {
+          return `
+<div>
+  <h1>Hi, type is ${tArgs.T}</h1>
+</div>
+          `
         }
-      }));
-      class Tester {
-        constructor(zibbedyboop) {
-          alert("Tester constructed! " + zibbedyboop);
-        }
-        nerf() {
-          alert("zoink");
-        }
-      }
-      let testing = new MyTestClass("string")("hi");
-      testing.alertUser();
-      testing = new MyTestClass("float")(6.404);
-      testing.alertUser();
-      let thisMightWork = new MyTestClass(Tester)(8);
-      thisMightWork.thingy().nerf();
-      thisMightWork.thingy(new Tester("shmeef"));
-      thisMightWork.thingy().nerf();
+      });
+      customElements.define('my-elem-string', MyElement("string"));
+      customElements.define('my-elem-obj', MyElement(Object));
     </script>
   </body>
 </html>

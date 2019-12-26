@@ -1,1 +1,1 @@
-tsc main.ts --outFile main.js --lib es2015 --downlevelIteration --inlineSourceMap
+tsc main.ts --lib es2015 --downlevelIteration --inlineSourceMap --module es6 --outDir dist --target es6
