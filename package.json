@@ -1,0 +1,19 @@
+{
+  "name": "typings.js",
+  "version": "1.0.0",
+  "description": "An RTTI and generics system for JavaScript",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munchkinhalfling/typings.js.git"
+  },
+  "author": "munchkinhalfling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/munchkinhalfling/typings.js/issues"
+  },
+  "homepage": "https://github.com/munchkinhalfling/typings.js#readme"
+}
