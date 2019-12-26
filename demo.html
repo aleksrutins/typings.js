@@ -7,6 +7,39 @@
   <title>Typings.js Tutorial</title>
 </head>
 <body>
-  
+  <hello-world-elem-ned></hello-world-elem-ned>
+  <hello-world-elem-marker></hello-world-elem-marker>
+  <script>
+    import * as typings from 'https:cdn.jsdelivr.net/npm/typings.js';
+    import {TemplateElement} from 'https:cdn.jsdelivr.net/npm/template-element';
+    const Person = typings.createGenericClass(["Name"], tArgs => class {
+      get name() {
+        return tArgs.Name;
+      }
+      greet() {
+        alert(`Hello, ${tArgs.Name!}`);
+      }
+      defAct() {
+        this.greet();
+      }
+    });
+    class Marker {
+      defAct() {
+        alert("I am a marker.")
+      }
+    }
+    const HelloWorldElement = typings.createGenericClass(["T"], tArgs => class extends TemplateElement {
+      get template() {
+        return `
+<button @click="clicked">Click me!</button>
+        `;
+      }
+      clicked() {
+        (new (typeArgs.T)()).defAct();
+      }
+    });
+    customElements.define('hello-world-elem-ned', HelloWorldElement(Person("Ned")));
+    customElements.define('hello-world-elem-marker', HelloWorldElement(Marker));
+  </script>
 </body>
 </html>
