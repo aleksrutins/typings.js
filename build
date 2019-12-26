@@ -1,1 +1,1 @@
-tsc main.ts --outFile main.js --lib es2015 --downlevelIteration --inlineSourceMap
+tsc main.ts --outFile index.js --lib es2019 --downlevelIteration --inlineSourceMap
